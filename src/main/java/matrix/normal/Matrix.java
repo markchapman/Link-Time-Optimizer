@@ -1,6 +1,7 @@
 package matrix.normal;
 
-public interface Matrix {
+public interface Matrix
+{
 
     double[][] getAsArray();
 
