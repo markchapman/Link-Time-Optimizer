@@ -25,28 +25,30 @@ public class AppCreator implements Constants {
         _cg.getJavaClass().dump(out);
     }
 
+    @SuppressWarnings("static-access")
     private void createMethod_0() {
         InstructionList il = new InstructionList();
         MethodGen method = new MethodGen(ACC_PUBLIC, Type.VOID, Type.NO_ARGS, new String[] {  }, "<init>",
                 "matrix.normal.App", il, _cp);
 
-        InstructionHandle ih_0 = il.append(_factory.createLoad(Type.OBJECT, 0));
+        il.append(_factory.createLoad(Type.OBJECT, 0));
         il.append(_factory.createInvoke("java.lang.Object", "<init>", Type.VOID, Type.NO_ARGS,
                 Constants.INVOKESPECIAL));
-        InstructionHandle ih_4 = il.append(_factory.createReturn(Type.VOID));
+        il.append(_factory.createReturn(Type.VOID));
         method.setMaxStack();
         method.setMaxLocals();
         _cg.addMethod(method.getMethod());
         il.dispose();
     }
 
+    @SuppressWarnings("static-access")
     private void createMethod_1() {
         InstructionList il = new InstructionList();
         MethodGen method = new MethodGen(ACC_PUBLIC | ACC_STATIC, Type.VOID,
                 new Type[] { new ArrayType(Type.STRING, 1) }, new String[] { "arg0" }, "main", "matrix.normal.App", il,
                 _cp);
 
-        InstructionHandle ih_0 = il.append(new PUSH(_cp, 2));
+        il.append(new PUSH(_cp, 2));
         il.append(_factory.createNewArray(Type.DOUBLE, (short) 1));
         il.append(InstructionConstants.DUP);
         il.append(new PUSH(_cp, 0));
@@ -78,35 +80,36 @@ public class AppCreator implements Constants {
                 new ObjectType("matrix.normal.Matrix"), new Type[] { new ArrayType(Type.DOUBLE, 2) },
                 Constants.INVOKESTATIC));
         il.append(_factory.createStore(Type.OBJECT, 1));
-        InstructionHandle ih_42 = il.append(_factory.createLoad(Type.OBJECT, 1));
+        il.append(_factory.createLoad(Type.OBJECT, 1));
         il.append(new PUSH(_cp, 4));
         il.append(_factory.createInvoke("matrix.normal.App", "op", Type.VOID,
                 new Type[] { new ObjectType("matrix.normal.Matrix"), Type.INT }, Constants.INVOKESTATIC));
-        InstructionHandle ih_47 = il.append(_factory.createReturn(Type.VOID));
+        il.append(_factory.createReturn(Type.VOID));
         method.setMaxStack();
         method.setMaxLocals();
         _cg.addMethod(method.getMethod());
         il.dispose();
     }
 
+    @SuppressWarnings("static-access")
     private void createMethod_2() {
         InstructionList il = new InstructionList();
         MethodGen method = new MethodGen(ACC_PUBLIC | ACC_STATIC, Type.VOID,
                 new Type[] { new ObjectType("matrix.normal.Matrix"), Type.INT }, new String[] { "arg0", "arg1" }, "op",
                 "matrix.normal.App", il, _cp);
 
-        InstructionHandle ih_0 = il.append(_factory.createLoad(Type.OBJECT, 0));
+        il.append(_factory.createLoad(Type.OBJECT, 0));
         il.append(_factory.createLoad(Type.INT, 1));
         il.append(_factory.createInvoke("matrix.normal.MatrixOperations", "power",
                 new ObjectType("matrix.normal.Matrix"),
                 new Type[] { new ObjectType("matrix.normal.Matrix"), Type.INT }, Constants.INVOKESTATIC));
         il.append(InstructionConstants.POP);
-        InstructionHandle ih_6 = il.append(_factory.createLoad(Type.OBJECT, 0));
+        il.append(_factory.createLoad(Type.OBJECT, 0));
         il.append(_factory.createInvoke("matrix.normal.MatrixOperations", "eigenvalues",
                 new ObjectType("matrix.normal.Matrix"), new Type[] { new ObjectType("matrix.normal.Matrix") },
                 Constants.INVOKESTATIC));
         il.append(InstructionConstants.POP);
-        InstructionHandle ih_11 = il.append(_factory.createReturn(Type.VOID));
+        il.append(_factory.createReturn(Type.VOID));
         method.setMaxStack();
         method.setMaxLocals();
         _cg.addMethod(method.getMethod());
