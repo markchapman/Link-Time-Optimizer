@@ -7,17 +7,15 @@ public class EigenDecompMatrix implements Matrix
     private final double[][] U;
     private final double[] L; //lambda
 
-    // remove
-    public EigenDecompMatrix()
-    {
-        U = new double[1][1];
-        L = new double[1];
-    }
-    
     public EigenDecompMatrix(double[][] U, double[] L)
     {
-        this.U = U;
-        this.L = L;
+        this.U = getCopy(U);
+        this.L = Arrays.copyOf(L, L.length);
+    }
+
+    @Override
+    public EigenDecompMatrix copy() {
+        return new EigenDecompMatrix(U, L);
     }
 
     @Override
@@ -50,7 +48,9 @@ public class EigenDecompMatrix implements Matrix
     @Cost(constant=40.0, lognexp=0.0, nexp=3.0)
     public static EigenDecompMatrix power(EigenDecompMatrix A, int k)
     {
-        EigenDecompMatrix mP = new EigenDecompMatrix();
+        EigenDecompMatrix mP = A.copy();
+        for (int i = 0; i < mP.L.length; i++)
+            mP.L[i] = Math.pow(mP.L[i], k);
         return mP;
     }
     
@@ -59,4 +59,5 @@ public class EigenDecompMatrix implements Matrix
     {
         return A;
     }
+
 }

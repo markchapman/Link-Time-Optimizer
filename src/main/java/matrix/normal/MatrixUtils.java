@@ -1,14 +1,9 @@
 package matrix.normal;
 
-/**
- * Misc stuff only
- *
- */
-public class MatrixUtils
-{
-    static void svd(int n, double[][] D, double[][] U, double[] L)
-    {
-        
+public class MatrixUtils {
+
+    public static void svd(int n, double[][] D, double[][] U, double[] L) {
+        // TODO
     }
 
     public static Matrix mult(Matrix mA, Matrix mB) {
@@ -19,4 +14,5 @@ public class MatrixUtils
                     mAB[r-1][c-1] += mA.getElement(r, n) * mB.getElement(n, c);
         return new DefaultMatrix(mAB);
     }
+
 }

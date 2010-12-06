@@ -7,10 +7,10 @@ public class MatrixOperations {
     }
 
     public static Matrix power(Matrix mA, int k) {
-        Matrix mP = new DefaultMatrix(mA);
+        Matrix mP = mA.copy();
         for (int i = 1; i < k; i++)
             mP = MatrixUtils.mult(mP, mA);
-        
         return mP;
     }
+
 }

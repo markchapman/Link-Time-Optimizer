@@ -22,6 +22,12 @@ public class DefaultMatrix implements Matrix
     }
 
     @Override
+    public DefaultMatrix copy()
+    {
+        return new DefaultMatrix(data);
+    }
+
+    @Override
     public double[][] getAsArray()
     {
         return getCopy(data);
@@ -74,4 +80,5 @@ public class DefaultMatrix implements Matrix
         MatrixUtils.svd(n, D, U, L);
         return new EigenDecompMatrix(U, L);
     }
+
 }

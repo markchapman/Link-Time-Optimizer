@@ -3,6 +3,8 @@ package matrix.normal;
 public interface Matrix
 {
 
+    Matrix copy();
+
     double[][] getAsArray();
 
     double getElement(int row, int col);
