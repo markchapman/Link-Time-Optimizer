@@ -1,4 +1,4 @@
-package matrix.normal;
+package old;
 
 import org.apache.bcel.util.BCELifier;
 

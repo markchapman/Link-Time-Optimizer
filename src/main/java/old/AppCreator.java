@@ -1,4 +1,4 @@
-package matrix.normal;
+package old;
 
 import org.apache.bcel.generic.*;
 import org.apache.bcel.*;
@@ -117,7 +117,7 @@ public class AppCreator implements Constants {
     }
 
     public static void main(String[] args) throws Exception {
-        matrix.normal.AppCreator creator = new matrix.normal.AppCreator();
+        old.AppCreator creator = new old.AppCreator();
         creator.create(new FileOutputStream("matrix.normal.App.class"));
     }
 

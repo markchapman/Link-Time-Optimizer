@@ -1,4 +1,4 @@
-package matrix.normal;
+package matrix;
 
 public class App {
 
@@ -9,7 +9,7 @@ public class App {
 
     public static void proc01(Matrix mA, int k) {
         MatrixOperations.power(mA, k);
-        MatrixOperations.eigenvalues(mA);
+        MatrixOperations.eigenvalues(mA, new double[mA.getNumRows()]);
     }
 
 }

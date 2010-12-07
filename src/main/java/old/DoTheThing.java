@@ -1,10 +1,12 @@
-package matrix.normal;
+package old;
 
-import static matrix.normal.Utils.*;
+import static optimizer.instrument.Utils.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import matrix.LibraryInfo;
 
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.classfile.Method;
@@ -26,7 +28,7 @@ public class DoTheThing
     public static void main() throws Exception
     {
         DoTheThing dtt = new DoTheThing();
-        dtt.lib = LibraryInfo.getMatrixLibraryInfo();
+        dtt.lib = new LibraryInfo();
         dtt.c = rlk("matrix.normal.App");
         dtt.m = rlm("matrix.normal.App", "proc01");
     }
@@ -51,7 +53,7 @@ public class DoTheThing
         CodeConstraint constraint = new CodeConstraint() {
             public boolean checkCode(InstructionHandle[] match) {
               InvokeInstruction if1 = (InvokeInstruction)match[0].getInstruction();
-              return lib.BM.contains(if1.getMethodName(cpg));
+              return lib.getBaseMethods().contains(if1.getMethodName(cpg));
             }  
           };
         for(Iterator<?> e = f.search(pat, constraint); e.hasNext(); ) {

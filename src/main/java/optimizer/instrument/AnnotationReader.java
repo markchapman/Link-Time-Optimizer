@@ -35,8 +35,7 @@ public class AnnotationReader implements AttributeReader {
 
     public static Annotation getAnnotation(Map<String, Object> map) {
         String typeName = (String)map.get("_type");
-        typeName = typeName.substring(1, typeName.length()-1);
-        typeName = typeName.replace("/", ".");
+        typeName = typeName.substring(1, typeName.length()-1).replace("/", ".");
         try {
             Class<?> type = Class.forName(typeName);
             ClassLoader cl = AnnotationReader.class.getClassLoader();

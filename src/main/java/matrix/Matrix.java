@@ -1,5 +1,8 @@
-package matrix.normal;
+package matrix;
 
+import optimizer.instrument.Equivalents;
+
+@Equivalents({"matrix.DefaultMatrix", "matrix.EigenDecompMatrix"})
 public interface Matrix
 {
 
