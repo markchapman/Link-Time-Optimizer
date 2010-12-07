@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 public @interface Equivalents {
     
-    String[] value();
+    String value();
 
 }

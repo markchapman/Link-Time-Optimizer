@@ -74,7 +74,7 @@ public class AnnotationReader implements AttributeReader {
         case 's':
             return cp.constantToString(cp.getConstant(in.readShort()));
         default:
-            throw new UnsupportedOperationException("tag = " + tag);
+            throw new UnsupportedOperationException("tag = " + (char) tag);
         }
     }
 

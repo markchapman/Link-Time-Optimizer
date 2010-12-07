@@ -47,10 +47,10 @@
               </descriptorRefs>
               <archive>
                 <manifest>
-                  <mainClass>optimizer.instrument.App</mainClass>
+                  <mainClass>matrix.App</mainClass>
                 </manifest>
                 <manifestEntries>
-                  <Premain-Class>optimizer.instrument.ListAnnotations</Premain-Class>
+                  <Premain-Class>optimizer.instrument.LinkTimeOptimizer</Premain-Class>
                   <Can-Redefine-Classes>true</Can-Redefine-Classes>
                   <Can-Retransform-Classes>true</Can-Retransform-Classes>
                 </manifestEntries>

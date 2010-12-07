@@ -15,15 +15,15 @@ public class LibraryInfo implements optimizer.instrument.LibraryInfo {
 
     static {
         // base types
-        bt.add(rlk("matrix.normal.Matrix"));
+        bt.add(rlk("matrix.Matrix"));
         // base methods
-        bm.add(rlm("matrix.normal.MatrixOperations", "eigenvalues"));
-        bm.add(rlm("matrix.normal.MatrixOperations", "multiply"));
-        bm.add(rlm("matrix.normal.MatrixOperations", "power"));
-        bm.add(rlm("matrix.normal.MatrixOperations", "svd"));
+        bm.add(rlm("matrix.MatrixOperations", "eigenvalues"));
+        bm.add(rlm("matrix.MatrixOperations", "multiply"));
+        bm.add(rlm("matrix.MatrixOperations", "power"));
+        bm.add(rlm("matrix.MatrixOperations", "svd"));
         // transformations
-        tt.add(rlm("matrix.normal.MatrixTransforms", "DefaultMatrixToEigenDecompMatrix"));
-        tt.add(rlm("matrix.normal.MatrixTransforms", "EigenDecompMatrixToDefaultMatrix"));
+        tt.add(rlm("matrix.MatrixTransforms", "DefaultMatrixToEigenDecompMatrix"));
+        tt.add(rlm("matrix.MatrixTransforms", "EigenDecompMatrixToDefaultMatrix"));
     }
 
     @Override

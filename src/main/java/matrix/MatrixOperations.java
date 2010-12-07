@@ -4,7 +4,7 @@ import optimizer.instrument.Equivalents;
 
 public class MatrixOperations {
 
-    @Equivalents({"matrix.DefaultMatrix.eigenvalues", "matrix.EigenDecompMatrix.eigenvalues"})
+    @Equivalents("matrix.DefaultMatrix.eigenvalues,matrix.EigenDecompMatrix.eigenvalues")
     public static void eigenvalues(Matrix A, double[] L)
     {
         if (A instanceof DefaultMatrix)
@@ -13,7 +13,7 @@ public class MatrixOperations {
             EigenDecompMatrix.eigenvalues((EigenDecompMatrix) A, L);
     }
 
-    @Equivalents({"matrix.DefaultMatrix.multiply", "matrix.EigenDecompMatrix.multiply"})
+    @Equivalents("matrix.DefaultMatrix.multiply,matrix.EigenDecompMatrix.multiply")
     public static Matrix multiply(Matrix A, Matrix B)
     {
         if (A instanceof DefaultMatrix && B instanceof DefaultMatrix)
@@ -23,7 +23,7 @@ public class MatrixOperations {
         return DefaultMatrix.multiply(new DefaultMatrix(A), new DefaultMatrix(B));
     }
 
-    @Equivalents({"matrix.DefaultMatrix.power", "matrix.EigenDecompMatrix.power"})
+    @Equivalents("matrix.DefaultMatrix.power,matrix.EigenDecompMatrix.power")
     public static Matrix power(Matrix A, int k)
     {
         if (A instanceof DefaultMatrix)
@@ -33,7 +33,7 @@ public class MatrixOperations {
         return DefaultMatrix.power(new DefaultMatrix(A), k);
     }
 
-    @Equivalents({"matrix.DefaultMatrix.svd", "matrix.EigenDecompMatrix.svd"})
+    @Equivalents("matrix.DefaultMatrix.svd,matrix.EigenDecompMatrix.svd")
     public static void svd(Matrix A, double[][] U, double[] L)
     {
         int n = A.getNumRows();

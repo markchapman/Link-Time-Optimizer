@@ -2,7 +2,7 @@ package matrix;
 
 import optimizer.instrument.Equivalents;
 
-@Equivalents({"matrix.DefaultMatrix", "matrix.EigenDecompMatrix"})
+@Equivalents("matrix.DefaultMatrix,matrix.EigenDecompMatrix")
 public interface Matrix
 {
 

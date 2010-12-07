@@ -58,7 +58,7 @@ public class LinkTimeOptimizer implements ClassFileTransformer {
             for (Annotation an : AnnotationReader.getAnnotations(m.getAttributes())) {
                 if (an instanceof Equivalents) {
                     Set<Method> e = new HashSet<Method>();
-                    for (String s : ((Equivalents) an).value()) {
+                    for (String s : ((Equivalents) an).value().split(",")) {
                         int i = s.lastIndexOf('.');
                         e.add(rlm(s.substring(0, i), s.substring(i + 1)));
                     }
@@ -74,7 +74,7 @@ public class LinkTimeOptimizer implements ClassFileTransformer {
             for (Annotation an : AnnotationReader.getAnnotations(t.getAttributes())) {
                 if (an instanceof Equivalents) {
                     Set<JavaClass> e = new HashSet<JavaClass>();
-                    for (String s : ((Equivalents) an).value())
+                    for (String s : ((Equivalents) an).value().split(","))
                         e.add(rlk(s));
                     et.put(t, e);
                 }
@@ -84,7 +84,7 @@ public class LinkTimeOptimizer implements ClassFileTransformer {
 
     private void readMethodCosts()
     {
-        Set<Method> all = em.keySet();
+        Set<Method> all = new HashSet<Method>();
         for (Set<Method> sm : em.values())
             for (Method m : sm)
                 all.add(m);
@@ -109,12 +109,20 @@ public class LinkTimeOptimizer implements ClassFileTransformer {
         String n = String.format("%n");
 
         s.append("Equivalent methods:" + n);
-        for (Method m : li.getBaseMethods())
-            s.append("  " + m.getName() + " -> " + em.get(m) + n);
+        for (Method m : li.getBaseMethods()) {
+            s.append("  " + m.getName() + " -> { ");
+            for (Method e : em.get(m))
+                s.append(e.getReturnType() + ":" + e.getName() + " "); // TODO fix this info
+            s.append("}" + n);
+        }
 
         s.append("Equivalent types:" + n);
-        for (JavaClass t : li.getBaseTypes())
-            s.append("  " + t.getClassName() + " -> " + et.get(t) + n);
+        for (JavaClass t : li.getBaseTypes()) {
+            s.append("  " + t.getClassName() + " -> { ");
+            for (JavaClass e : et.get(t))
+                s.append(e.getClassName() + " ");
+            s.append("}" + n);
+        }
 
         s.append("Method costs:" + n);
         for (Method m : cm.keySet())
