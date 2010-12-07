@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import matrix.LibraryInfo;
+import matrix.Manifest;
 
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.classfile.Method;
@@ -20,7 +20,7 @@ import org.apache.bcel.util.InstructionFinder.CodeConstraint;
 
 public class DoTheThing
 {
-    public LibraryInfo lib;
+    public Manifest lib;
     public Method m;
     public MethodGen mg;
     public ConstantPoolGen cpg; 
@@ -28,7 +28,7 @@ public class DoTheThing
     public static void main() throws Exception
     {
         DoTheThing dtt = new DoTheThing();
-        dtt.lib = new LibraryInfo();
+        dtt.lib = new Manifest();
         dtt.c = rlk("matrix.normal.App");
         dtt.m = rlm("matrix.normal.App", "proc01");
     }

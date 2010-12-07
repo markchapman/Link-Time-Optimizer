@@ -8,7 +8,7 @@ import java.util.Set;
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.classfile.Method;
 
-public class LibraryInfo implements optimizer.instrument.LibraryInfo {
+public class Manifest implements optimizer.instrument.Manifest {
 
     private static final Set<JavaClass> bt = new HashSet<JavaClass>();
     private static final Set<Method> bm = new HashSet<Method>(), tt = new HashSet<Method>();
