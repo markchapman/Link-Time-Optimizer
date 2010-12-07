@@ -1,0 +1,5 @@
+liblpsolve55-dev
+cmake
+libboost-dev
+build-essentials
+coinor-libcbc-dev
