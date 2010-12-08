@@ -4,7 +4,8 @@ import static matrix.Utils.*;
 
 import java.util.Arrays;
 
-import optimizer.instrument.Cost;
+import lto.libinfo.Cost;
+
 
 public class EigenDecompMatrix implements Matrix
 {

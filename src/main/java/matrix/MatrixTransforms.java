@@ -1,6 +1,6 @@
 package matrix;
 
-import optimizer.instrument.Cost;
+import lto.libinfo.Cost;
 
 public class MatrixTransforms
 {

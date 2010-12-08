@@ -1,8 +1,8 @@
 package matrix;
 
 import static matrix.Utils.*;
+import lto.libinfo.Cost;
 
-import optimizer.instrument.Cost;
 
 public class DefaultMatrix implements Matrix
 {

@@ -1,6 +1,6 @@
 package matrix;
 
-import optimizer.instrument.Equivalents;
+import lto.libinfo.Equivalents;
 
 public class MatrixOperations {
 

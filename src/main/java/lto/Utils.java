@@ -1,4 +1,4 @@
-package optimizer.instrument;
+package lto;
 
 import org.apache.bcel.Repository;
 import org.apache.bcel.classfile.JavaClass;
@@ -25,5 +25,10 @@ public class Utils
                 return m;
         return null;
     }
-
+    
+    public static Method rlm(String s)
+    {
+        int i = s.lastIndexOf('.');
+        return rlm(s.substring(0, i), s.substring(i + 1));
+    }
 }

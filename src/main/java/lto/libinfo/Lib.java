@@ -1,4 +1,4 @@
-package optimizer.instrument;
+package lto.libinfo;
 
 public class Lib {
 

@@ -1,4 +1,4 @@
-package optimizer.instrument;
+package lto.libinfo;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

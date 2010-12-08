@@ -1,4 +1,4 @@
-package optimizer.instrument;
+package lto.libinfo;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package optimizer.instrument;
+package lto.libinfo;
 
 import java.util.List;
 import java.util.Map;
