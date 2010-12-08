@@ -74,6 +74,24 @@
   \end{block}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Matrix Problem}
+  \begin{semiverbatim}
+  public static void main(String[] args) \{
+    Matrix mA = MatrixFactory.create(
+        new double[] \{\{1.0, 2.0\}, \{3.0, 4.0\}\});
+    System.out.println(proc01(mA, 4));
+  \}
+  public static double[] proc01(Matrix mA, int k) \{
+    \only<2->{mA = new EigenDecompMatrix(mA);}
+    mA = MatrixOperations.power(mA, k);
+    double[] vL = new double[mA.getNumRows()];
+    MatrixOperations.eigenvalues(mA, vL);
+    return vL;
+  \}
+  \end{semiverbatim}
+\end{frame}
+
 \subsection{Solution}
 
 \begin{frame}{Overview}
@@ -162,13 +180,6 @@
 \subsection{Current Status}
 
 \begin{frame}{Current Status}
-  \begin{block}{Matrix Library}
-    \begin{itemize}
-    \item Limiting visibility to abstract base types makes some decisions difficult, e.g.\ user might want a {\it sparse} matrix
-    \item Allow user to choose some type seeds or leave all decision to optimizer alone
-    \end{itemize}
-  \end{block}
-\pause
   \begin{block}{Link-Time Analysis}
     \begin{itemize}
     \item Working pieces:
@@ -180,11 +191,25 @@
     \item Remaining step: connect to optimizer to instrument application methods
     \end{itemize}
   \end{block}
+\pause
+  \begin{block}{Matrix Library}
+    \begin{itemize}
+    \item Limiting visibility to abstract base types makes some decisions difficult, e.g.\ user might want a {\it sparse} matrix
+    \item Allow user to choose some type seeds or leave all decision to optimizer alone
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \subsection{Possible Future Work}
 
 \begin{frame}{Possible Future Work}
+  \begin{block}{Meaning of Cost}
+    \begin{itemize}
+    \item Annotate memory usage instead of execution time
+    \item How could we annotate both and choose a balance?
+    \end{itemize}
+  \end{block}
+\pause
   \begin{block}{Analysis}
     \begin{itemize}
     \item Static: add checkpoints where types may change
