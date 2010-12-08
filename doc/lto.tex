@@ -1,0 +1,150 @@
+\documentclass{beamer}
+\mode<presentation>
+\usetheme{Wisconsin}
+\usepackage{times}
+\usepackage{amsmath,amsthm,amssymb,latexsym,tikz}
+\boldmath
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\title[LTO]{Link-time Analysis to Optimize Library Usage}
+\author[Chapman and He]{Mark Chapman and David He}
+\institute[CS 706]{CS 706 Final Project}
+\date[2010-12-08]{December 8, 2010}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\subsection{Motivation}
+\begin{frame}{Motivation}
+  \begin{block}{Library Usage}
+    \begin{itemize}
+    \item Authors: experts in field supply a module
+    \item Users: application developers use modules
+    \item {\it Problem:} optimal usage requires expertise by both parties
+    \end{itemize}
+  \end{block}
+\pause
+  \begin{block}{Separate the Concerns}
+    \begin{itemize}
+    \item Authors: supply insight to accomplish task {\bf efficiently}
+    \item Users: supply logic to use library {\bf correctly}
+    \item {\it Solution:} enable libraries to optimize themselves {\bf across method calls}, not just in separate calls
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Examples} % TODO rectangle image
+  \begin{block}{Rectangle}
+    \begin{itemize}
+    \item Need 4 values
+    \item Remainder can be computed
+\pause
+    \item Look ahead and store values that are requested later
+    \end{itemize}
+  \end{block}
+\pause
+  \begin{block}{Data Structures}
+    \begin{itemize}
+    \item Map $\rightarrow$ HashMap or TreeMap
+    \item List $\rightarrow$ LinkedList or ArrayList
+    \item Only once use is known can the correct subtype be chosen
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{Summary}
+\begin{frame}{Summary}
+  \begin{block}{Enforce Separation of Concerns}
+    \begin{itemize}
+    \item Library addresses performance internally
+    \item Only base types are visible to user
+    \end{itemize}
+  \end{block}
+\pause
+  \begin{block}{Optimize at Link-Time}
+    \begin{itemize}
+    \item Perform static analysis: flow-sensitive and context-insensitive
+    \item Choose types: determines best types for list of method calls
+    \item Insert transforms: convert between concrete types
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Solution Details}
+
+\subsection{Framework} % TODO
+\begin{frame}{Framework}
+  \begin{block}{X}
+    \begin{itemize}
+    \item X
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{Implementation}
+\begin{frame}{Implementation}
+  \begin{block}{Library Instrumentation}
+    \begin{itemize}
+    \item Manifest listing base classes, methods, and transformations
+    \item {\it @Equivalent} annotations with subclasses and replacement methods
+    \item {\it @Cost} annotations with relative times for methods and transforms
+    \end{itemize}
+  \end{block}
+\pause
+  \begin{block}{Link-Time Optimization (LTO)}
+    \begin{itemize}
+    \item Uses {\it java.lang.instrument} and {\it BCEL}
+    \item Reads in annotations from instrumented library
+    \item Transforms application bytecode when loaded
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Conclusion}
+
+\subsection{Preliminary Results} % TODO
+\begin{frame}{Preliminary Results}
+  \begin{block}{Matrix Library}
+    \begin{itemize}
+    \item X
+    \end{itemize}
+  \end{block}
+\pause
+  \begin{block}{Generalization}
+    \begin{itemize}
+    \item Y
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{Possible Future Work}
+\begin{frame}{Possible Future Work}
+  \begin{block}{Analysis}
+    \begin{itemize}
+    \item Static: add checkpoints where types may change
+    \item Dynamic: change types depending on actual state
+    \item Gains sensitivity to path and context
+    \end{itemize}
+  \end{block}
+\pause
+  \begin{block}{Type System}
+    \begin{itemize}
+    \item Qualifiers: finer control with type lattice rather than hierarchy
+    \item Multiple interfaces: positive qualifiers without language extension
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\end{document}
