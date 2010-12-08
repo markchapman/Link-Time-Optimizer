@@ -145,7 +145,7 @@
 
   A {\em configuration} is a type assignment of variables \[a : X \rightarrow T\]
 
-  The set of all configurations is \[A = T^{|X|}\]
+  The set of all configurations is \[A = T^{X}\]
 \end{frame}
 
 \begin{frame}{Problem formulation}
@@ -161,10 +161,19 @@
   \begin{tabular}{lrl}
   directed graph $G = (V, E)$ & cost &$w: E \rightarrow \ZZ$ \\
   source $s$ sink $t$ & capacity &$c: E\rightarrow \ZZ$ \\
+  flow $f$ &
+  &
+$ d(v) = 
+  \begin{cases}
+  f & \mbox{if } v=s\\
+  -f & \mbox{if } v=t\\
+  0 & \mbox{otherwise}
+  \end{cases} 
+  $
   \end{tabular}
-  \vspace{0.5cm}
 
   \uncover<2->{\alert<2>{$S_m = \{(v_{0ma}, v_{1ma}) \forall a\in A_m\}$}}
+  \vspace{0.5cm}
 
   Minimize $\sum_{e\in E} w_e x_e$ subject to
   \begin{align*}
