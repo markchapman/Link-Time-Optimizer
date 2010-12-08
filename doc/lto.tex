@@ -7,6 +7,9 @@
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
 
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Acal}{\mathcal{A}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \title[LTO]{Link-time Analysis to Optimize Library Usage}
 \author[Chapman and He]{Mark Chapman and David He}
@@ -145,6 +148,53 @@
     \item Multiple interfaces: positive qualifiers without language extension
     \end{itemize}
   \end{block}
+\end{frame}
+
+\subsection{Optimization}
+\begin{frame}{Problem formulation}
+\begin{tabular}{rl}
+Variables &$X = x_1, x_2, \dotsc, x_{|X|}$ \\
+Types &$T = t_1, t_2, \dotsc, t_{|T|}$ \\
+Method calls &$M = m_1, m_2, \dotsc, m_{|M|}$
+\end{tabular}
+
+A {\em configuration} is a type assignment of variables \[a : X \rightarrow T\]
+
+The set of all configurations is \[A = |T|^{|X|}\]
+\end{frame}
+
+\begin{frame}{Problem formulation}
+Cost of method calls \[CM: M \rightarrow A \rightarrow \ZZ\]
+Cost of type transforms \[CT: A \rightarrow A \rightarrow \ZZ\]
+
+Goal: Select $\Acal = a_1, a_2, \dotsc, a_{|M|}$ to minimize
+
+\[C(\Acal) = \sum_{i = 1}^{|M|} CM(m, A_m) + \sum_{i = 1}^{|M|} CT(a_{i - 1}, a_i).\]
+
+\end{frame}
+
+
+\subsection{Network Flow}
+\begin{frame}{LP formulation}
+
+\begin{tabular}{lrl}
+directed graph $G = (V, E)$ 
+&
+cost &$w: E \rightarrow \ZZ$ \\
+source $s$ sink $t$ 
+&
+capacity &$c: E\rightarrow \ZZ$ \\
+\end{tabular}
+\uncover<2->{\alert<2>{$S_m = \{(v_{0ma}, v_{1ma}) \forall a\in A_m\}$}}
+
+
+Minimize $\sum_{e\in E} w_e x_e$ subject to
+\begin{align*}
+\sum_{v : (v, u)\in E} x_{vu} - \sum_{v : (u, v)\in E} x_{uv} &= d(u) & \forall u \in V  \\
+x_e &\le c_e &\forall e \in E \\
+x_e &\ge 0 &\forall e \in E 
+\uncover<2->{\\x_e&\in \{0, 12\} &\forall m, \forall e\in S_m}
+\end{align*}
 \end{frame}
 
 \end{document}
