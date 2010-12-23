@@ -20,7 +20,6 @@ public class Manifest implements lto.libinfo.Manifest {
         BLM.add(rlm("matrix.MatrixOperations", "eigenvalues"));
         BLM.add(rlm("matrix.MatrixOperations", "multiply"));
         BLM.add(rlm("matrix.MatrixOperations", "power"));
-        BLM.add(rlm("matrix.MatrixOperations", "svd"));
         // transformations
         LS.add(rlm("matrix.MatrixTransforms", "DefaultMatrixToEigenDecompMatrix"));
         LS.add(rlm("matrix.MatrixTransforms", "EigenDecompMatrixToDefaultMatrix"));

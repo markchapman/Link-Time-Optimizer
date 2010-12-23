@@ -1,0 +1,44 @@
+size10.txt 4
+Unoptimized:     37.323 ms
+Optimized:        8.784 ms
+---
+size100.txt 4
+Unoptimized:    130.385 ms
+Optimized:       75.505 ms
+---
+size200.txt 4
+Unoptimized:    756.272 ms
+Optimized:      489.426 ms
+---
+size300.txt 4
+Unoptimized:   3742.031 ms
+Optimized:     2267.888 ms
+---
+size400.txt 4
+Unoptimized:  10704.096 ms
+Optimized:     5678.110 ms
+---
+size500.txt 4
+Unoptimized:  23693.347 ms
+Optimized:    15288.709 ms
+---
+size600.txt 4
+Unoptimized:  57204.353 ms
+Optimized:    32355.350 ms
+---
+size700.txt 4
+Unoptimized: 127222.228 ms
+Optimized:    76284.994 ms
+---
+size800.txt 4
+Unoptimized: 198241.727 ms
+Optimized:   109579.651 ms
+---
+size900.txt 4
+Unoptimized: 276771.997 ms
+Optimized:   158637.626 ms
+---
+size1000.txt 4
+Unoptimized: 399961.668 ms
+Optimized:   239796.383 ms
+---

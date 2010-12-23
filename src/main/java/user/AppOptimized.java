@@ -3,11 +3,12 @@ package user;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import matrix.EigenDecompMatrix;
 import matrix.Matrix;
 import matrix.MatrixFactory;
 import matrix.MatrixOperations;
 
-public class App {
+public class AppOptimized {
 
     public static void main(String[] args) throws IOException
     {
@@ -19,6 +20,7 @@ public class App {
 
     public static double[] proc01(Matrix mA, int k)
     {
+        mA = new EigenDecompMatrix(mA.getAsArray());
         mA = MatrixOperations.power(mA, k);
         return MatrixOperations.eigenvalues(mA);
     }

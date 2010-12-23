@@ -5,12 +5,13 @@ import lto.libinfo.Equivalents;
 public class MatrixOperations {
 
     @Equivalents("matrix.DefaultMatrix.eigenvalues,matrix.EigenDecompMatrix.eigenvalues")
-    public static void eigenvalues(Matrix A, double[] L)
+    public static double[] eigenvalues(Matrix A)
     {
         if (A instanceof DefaultMatrix)
-            DefaultMatrix.eigenvalues((DefaultMatrix) A, L);
+            return DefaultMatrix.eigenvalues((DefaultMatrix) A);
         else if (A instanceof EigenDecompMatrix)
-            EigenDecompMatrix.eigenvalues((EigenDecompMatrix) A, L);
+            return EigenDecompMatrix.eigenvalues((EigenDecompMatrix) A);
+        return DefaultMatrix.eigenvalues(new DefaultMatrix(A));
     }
 
     @Equivalents("matrix.DefaultMatrix.multiply,matrix.EigenDecompMatrix.multiply")
@@ -31,21 +32,6 @@ public class MatrixOperations {
         else if (A instanceof EigenDecompMatrix)
             return EigenDecompMatrix.power((EigenDecompMatrix) A, k);
         return DefaultMatrix.power(new DefaultMatrix(A), k);
-    }
-
-    @Equivalents("matrix.DefaultMatrix.svd,matrix.EigenDecompMatrix.svd")
-    public static void svd(Matrix A, double[][] U, double[] L)
-    {
-        int n = A.getNumRows();
-        assert n == A.getNumColumns();
-        assert n == U.length;
-        assert n == U[0].length;
-        assert n == L.length;
-
-        if (A instanceof DefaultMatrix)
-            DefaultMatrix.svd((DefaultMatrix) A, U, L);
-        else if (A instanceof EigenDecompMatrix)
-            EigenDecompMatrix.svd((EigenDecompMatrix) A, U, L);
     }
 
 }

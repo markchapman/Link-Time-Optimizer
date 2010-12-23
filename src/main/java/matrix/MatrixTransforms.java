@@ -5,13 +5,13 @@ import lto.libinfo.Cost;
 public class MatrixTransforms
 {
 
-    @Cost(10000) // TODO cost of DefaultMatrixToEigenDecompMatrix (10000?)
+    @Cost(10000)
     public static EigenDecompMatrix DefaultMatrixToEigenDecompMatrix(DefaultMatrix A)
     {
-        return new EigenDecompMatrix(A);
+        return new EigenDecompMatrix(A.getAsArray());
     }
 
-    @Cost(100) // TODO cost of EigenDecompMatrixToDefaultMatrix (100?)
+    @Cost(10000)
     public static DefaultMatrix EigenDecompMatrixToDefaultMatrix(EigenDecompMatrix A)
     {
         return new DefaultMatrix(A);

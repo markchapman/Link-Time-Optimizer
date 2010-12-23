@@ -28,6 +28,12 @@
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
+    <dependency>
+    	<groupId>jama</groupId>
+    	<artifactId>jama</artifactId>
+    	<version>1.0.2</version>
+    	<scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>

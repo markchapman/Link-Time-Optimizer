@@ -3,7 +3,6 @@ package matrix;
 import static matrix.Utils.*;
 import lto.libinfo.Cost;
 
-
 public class DefaultMatrix implements Matrix
 {
     private final double[][] data;
@@ -12,7 +11,7 @@ public class DefaultMatrix implements Matrix
     {
         this.data = new double[n][n];
     }
-    
+
     public DefaultMatrix(double[][] data)
     {
         this.data = getCopy(data);
@@ -53,13 +52,12 @@ public class DefaultMatrix implements Matrix
         return data.length;
     }
 
-    @Cost(10000) // TODO cost of eigenvalues (10000?)
-    public static void eigenvalues(DefaultMatrix A, double[] L) {
-        int n = A.getNumRows();
-        svd(A, new double[n][n], L);
+    @Cost(10000)
+    public static double[] eigenvalues(DefaultMatrix A) {
+        return (new Jama.Matrix(A.data)).eig().getRealEigenvalues();
     }
 
-    @Cost(10000) // TODO cost of multiply (10000?)
+    @Cost(1000)
     public static DefaultMatrix multiply(DefaultMatrix mA, DefaultMatrix mB) {
         double[][] mAB = new double[mA.getNumRows()][mB.getNumColumns()];
         for (int r = 1; r <= mAB.length; r++)
@@ -69,19 +67,13 @@ public class DefaultMatrix implements Matrix
         return new DefaultMatrix(mAB);
     }
 
-    @Cost(10000) // TODO cost of power (10000?)
+    @Cost(10000)
     public static DefaultMatrix power(DefaultMatrix mA, int k)
     {
         DefaultMatrix mP = mA.copy();
         for (int i = 1; i < k; i++)
             mP = multiply(mP, mA);
         return mP;
-    }
-
-    @Cost(10000) // TODO cost of svd (10000?)
-    public static void svd(DefaultMatrix A, double[][] U, double[] L)
-    {
-        // TODO svd
     }
 
 }
